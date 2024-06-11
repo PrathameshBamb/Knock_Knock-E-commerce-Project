@@ -1,0 +1,157 @@
+{% load static %}
+{% load cart_template_tags %}
+{% load category_template_tags %}
+
+<style>
+	.topbar {
+		background-color: white;
+		color: black !important;
+	}
+	.topbar a:hover{
+		color: black;
+	}
+</style>
+<!-- Header -->
+<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="#" class="topbar-social-item fab fa-facebook"></a>
+					<a href="#" class="topbar-social-item fab fa-instagram"></a>
+					<a href="#" class="topbar-social-item fab fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fab fa-twitter"></a>
+					<a href="#" class="topbar-social-item fab fa-youtube"></a>
+				</div>
+
+				<span class="topbar-child1">
+					** EVERY DELIVERY AN OPEN BOX DELIVERY **
+				</span>
+
+				<div class="topbar-child2">
+<!--					<span class="topbar-email">-->
+<!--						<a href=about.html>-->
+<!--						Contact Us-->
+<!--					    </a>-->
+					</span>
+
+					<div class="topbar-language rs1-select2">
+						<span class="topbar-email">
+<!--						<a href="...">-->
+						About Us
+					    </a>
+					</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="/" class="logo">
+					<p style="color: black; "><b style="font-size: 22px;">K</b>n0ck<b style="font-size: 22px;">K</b>n0ck</p>
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+							<li>
+								<a href="/">Home</a>
+
+							</li>
+
+							<li>
+								<a href="/shop/">Shop</a>
+							</li>
+
+							{% categories %}
+
+							{% if request.user.is_authenticated %}
+							<li>
+								<a href="{% url 'core:order-summary' %}">Cart<span class="badge badge-dark">{{ request.user|cart_item_count }}</span></a>
+							</li>
+							<li>
+								<a href="{% url 'account_logout' %}">Logout</a>
+							</li>
+							{% else %}
+							<li>
+								<a href="#">Login</a>
+								<ul class="sub_menu">
+									<li><a href="{% url 'account_login' %}">Login</a></li>
+									<li><a href="{% url 'account_signup' %}">SignUp</a></li>
+								</ul>
+							</li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+
+
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu" >
+			<nav class="side-menu">
+				<ul class="main-menu">
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over ₹100
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								Knock_knock@example.com
+							</span>
+
+							<div class="topbar-language rs1-select2">
+								<select class="selection-1" name="time">
+									<option>USD</option>
+									<option>EUR</option>
+								</select>
+							</div>
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<a href="#" class="topbar-social-item fa fa-facebook"></a>
+							<a href="#" class="topbar-social-item fa fa-instagram"></a>
+							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+						</div>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/">Home</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/shop">Shop</a>
+					</li>
+
+					{% categories_mobile %}
+
+					{% if request.user.is_authenticated %}
+					<li class="item-menu-mobile">
+						<a href="{% url 'core:order-summary' %}">Cart<span class="badge badge-dark">{{ request.user|cart_item_count }}</span></a>
+					</li>
+					<li class="item-menu-mobile">
+						<a href="{% url 'account_logout' %}">Logout</a>
+					</li>
+					{% else %}
+					<li class="item-menu-mobile">
+						<a href="#">Login</a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'account_login' %}">Login</a></li>
+							<li><a href="{% url 'account_signup' %}">SignUp</a></li>
+						</ul>
+						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+					</li>
+					{% endif %}
+
+				</ul>
+			</nav>
+		</div>
+	</header>
