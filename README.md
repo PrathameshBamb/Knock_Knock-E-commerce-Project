@@ -30,9 +30,9 @@ This project demonstrates how to build a scalable and efficient e-commerce syste
 
 Install All required libraries & packages mentioned in requirement.text file
 
--Django admin login credentials
--user_id: admin
--pass: 12345678
+- Django admin login credentials
+- user_id: admin
+- pass: 12345678
 
 ### Cloning the Repository
 
